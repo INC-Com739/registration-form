@@ -6,6 +6,70 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="submit.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <input type="submit" value="Submit">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        <br>
+        <label for="submit">Enter:</label>
+        <input type="submit" id="submit" name="submit" value="Submit">
+        <br>
+
+       <fieldset>
+        <legend>Interests</legend>
+        <label for="sports">Sports</label>
+        <input type="checkbox" id="sports" name="interests[]" value="sports">
+        <label for="music">Music</label>
+        <input type="checkbox" id="music" name="interests[]" value="music">
+        <label for="travel">Travel</label>
+        <input type="checkbox" id="travel" name="interests[]" value="travel">
+        <label for="reading">Reading</label>
+        <input type="checkbox" id="reading" name="interests[]" value="reading">
+        <label for="movies">Movies</label>
+        <input type="checkbox" id="movies" name="interests[]" value="movies">
+        <label for="cooking">Cooking</label>
+        <input type="checkbox" id="cooking" name="interests[]" value="cooking">
+        <label for="gaming">Gaming</label>
+        <input type="checkbox" id="gaming" name="interests[]" value="gaming">
+        <label for="photography">Photography</label>
+        <input type="checkbox" id="photography" name="interests[]" value="photography">
+        <label for="art">Art</label>
+        <input type="checkbox" id="art" name="interests[]" value="art">
+        <label for="writing">Writing</label>
+        <input type="checkbox" id="writing" name="interests[]" value="writing">
+        <label for="hiking">Hiking</label>
+        <input type="checkbox" id="hiking" name="interests[]" value="hiking">
+        <label for="dancing">Dancing</label>
+        <input type="checkbox" id="dancing" name="interests[]" value="dancing">
+        <label for="gardening">Gardening</label>
+        <input type="checkbox" id="gardening" name="interests[]" value="gardening">
+        <label for="cooking">Cooking</label>
+        <input type="checkbox" id="cooking" name="interests[]" value="cooking">
+       </fieldset>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const formData = new FormData(this);
+            fetch('submit.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // Handle the response data
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
